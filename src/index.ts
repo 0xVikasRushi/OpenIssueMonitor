@@ -21,7 +21,7 @@ async function getIssues(repoOwner: string, repoName: string) {
   }
 }
 
-cron.schedule("*/15 * * * * *", () => {
+cron.schedule("*/45 * * * * *", () => {
   console.count(
     "running a task every 45 seconds------------------------------------>"
   );
