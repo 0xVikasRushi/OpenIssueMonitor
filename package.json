@@ -13,8 +13,8 @@
   },
   "scripts": {
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js"
+    "build": "tsc --build",
+    "start": "tsc && node dist/index.js"
   },
   "devDependencies": {
     "@types/node": "^20.8.2",

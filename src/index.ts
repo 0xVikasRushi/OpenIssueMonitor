@@ -53,9 +53,9 @@ async function getIssues(repoOwner: string, repoName: string) {
   }
 }
 
-cron.schedule("*/15 * * * * *", () => {
+cron.schedule("*/10 * * * * *", () => {
   console.count(
-    "running a task every 45 seconds------------------------------------>"
+    "running a task every 10 seconds------------------------------------>"
   );
   getRateLimit();
   getIssues("facebook", "react");
