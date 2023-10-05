@@ -102,4 +102,4 @@ interface SortedIssue {
   originalLabels: string[];
 }
 
-export { Issue, User, Label, Milestone, PullRequest, FormatIssue, SortedIssue };
+export { FormatIssue, Issue, Label, Milestone, PullRequest, SortedIssue, User };

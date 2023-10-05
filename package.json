@@ -7,8 +7,10 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^1.5.1",
+    "discord.js": "^14.13.0",
     "dotenv": "^16.3.1",
     "node-cron": "^3.0.2",
+    "node-telegram-bot-api": "^0.63.0",
     "typescript": "^5.2.2"
   },
   "scripts": {
@@ -19,6 +21,7 @@
   "devDependencies": {
     "@types/node": "^20.8.2",
     "@types/node-cron": "^3.0.9",
+    "@types/node-telegram-bot-api": "^0.61.8",
     "nodemon": "^3.0.1",
     "ts-node": "^10.9.1"
   }
