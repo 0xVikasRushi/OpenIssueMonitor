@@ -5,10 +5,14 @@ const TELEGRAM_ACCESS_TOKEN = process.env.TELEGRAM_ACCESS_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 const LABELS = new Map([
   ["bug", true],
-  ["good first issue", true],
+  ["good first issue", false],
   ["help wanted", false],
   ["area/docs", false],
-  ["Hacktoberfest", true],
+  ["Hacktoberfest", false],
+  ["documentation", true],
+  ["dashboard", true],
+  ["Low priority", true],
+  ["🐛 bug", true],
 ]);
 export {
   ACCESS_TOKEN,
