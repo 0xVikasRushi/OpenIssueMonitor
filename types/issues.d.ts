@@ -93,4 +93,12 @@ interface FormatIssue {
   updatedAt: string;
 }
 
-export { Issue, User, Label, Milestone, PullRequest, FormatIssue };
+interface SortedIssue {
+  url: string;
+  label: string[];
+  title: string;
+  created_at: string;
+  updatedAt: string;
+}
+
+export { Issue, User, Label, Milestone, PullRequest, FormatIssue, SortedIssue };

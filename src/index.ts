@@ -6,9 +6,16 @@ import filterIssues from "./../utils/filterIssues";
 
 cron.schedule(`*/${REQUEST_RATE} * * * * *`, async () => {
   console.count(
-    "running a task every 10 seconds------------------------------------>"
+    "------------running a task every 10 seconds--------------------->"
   );
-  const formatIssues = await getIssues("facebook", "react");
+
+  const formatIssues = await getIssues("asyncapi", "website");
   const filteredIssues = filterIssues(formatIssues, LABELS);
-  // ? filteredIssues
+  filteredIssues.forEach((issue) => {
+    console.log({
+      url: issue.url,
+      label: issue.label,
+      title: issue.title,
+    });
+  });
 });
