@@ -1,10 +1,10 @@
-const REQUEST_RATE = 10;
+const REQUEST_RATE = 15;
 const API_URL = "https://api.github.com";
 const ACCESS_TOKEN = process.env.GITHUB_ACCESS_TOKEN;
 
 const LABELS = new Map([
-  ["bug", false],
-  ["good first issue", false],
+  ["bug", true],
+  ["good first issue", true],
   ["help wanted", false],
   ["area/docs", false],
   ["Hacktoberfest", true],
