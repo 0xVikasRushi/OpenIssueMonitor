@@ -1,11 +1,14 @@
 require("dotenv").config();
 import cron from "node-cron";
 import { getIssues } from "./api";
+import { REQUEST_RATE, LABELS } from "./../utils/constant";
+import filterIssues from "./../utils/filterIssues";
 
-cron.schedule("*/10 * * * * *", async () => {
+cron.schedule(`*/${REQUEST_RATE} * * * * *`, async () => {
   console.count(
     "running a task every 10 seconds------------------------------------>"
   );
-  const isssues = await getIssues("facebook", "react");
-  console.log(isssues.length);
+  const formatIssues = await getIssues("facebook", "react");
+  const filteredIssues = filterIssues(formatIssues, LABELS);
+  // ? filteredIssues
 });
