@@ -1,35 +1,62 @@
 require("dotenv").config();
-import { Octokit } from "@octokit/core";
-const cron = require("node-cron");
-const octokit = new Octokit({
-  auth: process.env.GITHUB_ACCESS_TOKEN,
-});
+import axios from "axios";
+import cron from "node-cron";
 
-async function getIssues(repoOwner: string, repoName: string) {
+async function getRateLimit() {
+  const apiUrl = "https://api.github.com/rate_limit";
+  const accessToken = process.env.GITHUB_ACCESS_TOKEN;
+  const headers = {
+    Accept: "application/vnd.github.v3+json",
+    Authorization: `Bearer ${accessToken}`,
+  };
+
   try {
-    const req = await octokit.request("GET /repos/{owner}/{repo}/issues", {
-      owner: repoOwner,
-      repo: repoName,
-      headers: {
-        "X-GitHub-Api-Version": "2022-11-28",
-      },
+    const response = await axios.get(apiUrl, {
+      headers,
     });
-    console.log(req.data[0].url);
+    const rateLimit = response.data.rate;
+    console.log("Rate Limit Remaining:", rateLimit.remaining);
+    const resetTime = new Date(rateLimit.reset * 1000);
+    console.log(
+      "Rate Limit Reset Time:",
+      resetTime.toLocaleString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        hour12: true,
+      })
+    );
   } catch (error) {
-    console.error(error.message);
+    console.error("Error fetching rate limit:", error.message);
   }
 }
 
-// cron.schedule("*/45 * * * * *", () => {
-//   console.count(
-//     "running a task every 45 seconds------------------------------------>"
-//   );
-//   getIssues("facebook", "react");
-// });
+async function getIssues(repoOwner: string, repoName: string) {
+  const apiUrl = "https://api.github.com";
+  const accessToken = process.env.GITHUB_ACCESS_TOKEN;
+  const headers = {
+    Accept: "application/vnd.github.v3+json",
+    Authorization: `Bearer ${accessToken}`,
+    "X-GitHub-Api-Version": "2022-11-28",
+  };
 
-setInterval(() => {
+  try {
+    const res = await axios.get(
+      `${apiUrl}/repos/${repoOwner}/${repoName}/issues`,
+      {
+        headers,
+      }
+    );
+    console.log(res.data[0].url + `(${res.data[0].labels[0].name})`);
+  } catch (error) {
+    console.error("Error fetching issues:", error.message);
+  }
+}
+
+cron.schedule("*/15 * * * * *", () => {
   console.count(
     "running a task every 45 seconds------------------------------------>"
   );
+  getRateLimit();
   getIssues("facebook", "react");
-}, 45000);
+});
