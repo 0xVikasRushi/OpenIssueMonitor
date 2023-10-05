@@ -1,7 +1,6 @@
 require("dotenv").config();
 import { Octokit } from "@octokit/core";
-
-var cron = require("node-cron");
+const cron = require("node-cron");
 const octokit = new Octokit({
   auth: process.env.GITHUB_ACCESS_TOKEN,
 });
@@ -21,9 +20,16 @@ async function getIssues(repoOwner: string, repoName: string) {
   }
 }
 
-cron.schedule("*/45 * * * * *", () => {
+// cron.schedule("*/45 * * * * *", () => {
+//   console.count(
+//     "running a task every 45 seconds------------------------------------>"
+//   );
+//   getIssues("facebook", "react");
+// });
+
+setInterval(() => {
   console.count(
     "running a task every 45 seconds------------------------------------>"
   );
   getIssues("facebook", "react");
-});
+}, 45000);
