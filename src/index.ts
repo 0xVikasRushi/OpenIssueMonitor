@@ -14,7 +14,8 @@ cron.schedule(`*/${REQUEST_RATE} * * * * *`, async () => {
   filteredIssues.forEach((issue) => {
     console.log({
       url: issue.url,
-      label: issue.label,
+      label: issue.Requestedlabel,
+      AllLabels: issue.originalLabels,
       title: issue.title,
     });
   });

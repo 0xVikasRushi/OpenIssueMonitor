@@ -12,6 +12,7 @@ const filterIssues = (
   for (let i = 0; i < formatIssue.length; i++) {
     const issue = formatIssue[i];
     const issueLabels = issue.label;
+    const allLabelForIssue = issueLabels.map((label) => label.name);
     for (let j = 0; j < issueLabels.length; j++) {
       const indiviualLabel = issueLabels[j].name;
       if (labels.has(indiviualLabel) && labels.get(indiviualLabel) === true) {
@@ -19,7 +20,8 @@ const filterIssues = (
 
         const sortedIssue: SortedIssue = {
           url: githubIssueUrl,
-          label: [indiviualLabel],
+          Requestedlabel: [indiviualLabel],
+          originalLabels: allLabelForIssue,
           title: issue.title,
           created_at: issue.created_at,
           updatedAt: issue.updatedAt,

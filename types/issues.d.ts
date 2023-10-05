@@ -95,10 +95,11 @@ interface FormatIssue {
 
 interface SortedIssue {
   url: string;
-  label: string[];
+  Requestedlabel: string[];
   title: string;
   created_at: string;
   updatedAt: string;
+  originalLabels: string[];
 }
 
 export { Issue, User, Label, Milestone, PullRequest, FormatIssue, SortedIssue };
