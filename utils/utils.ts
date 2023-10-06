@@ -1,6 +1,6 @@
-export default function convertGithubApiUrlToRegularUrl(
+export const convertGithubApiUrlToRegularUrl = (
   apiUrl: string
-): string | null {
+): string | null => {
   const apiUrlPattern =
     /^https:\/\/api\.github\.com\/repos\/([^/]+\/[^/]+)\/issues\/(\d+)$/;
   const match = apiUrl.match(apiUrlPattern);
@@ -11,4 +11,20 @@ export default function convertGithubApiUrlToRegularUrl(
     return regularUrl;
   }
   return null;
-}
+};
+export const getRepoInfo = (repoUrl: string): [string, string] => {
+  const url = new URL(repoUrl);
+  if (url.hostname !== "github.com") {
+    throw new Error("Not a GitHub repository URL");
+  }
+
+  const pathParts = url.pathname.split("/");
+  if (pathParts.length !== 3) {
+    throw new Error("Invalid GitHub repository URL");
+  }
+
+  const repoOwner = pathParts[1];
+  const repoName = pathParts[2];
+
+  return [repoOwner, repoName];
+};

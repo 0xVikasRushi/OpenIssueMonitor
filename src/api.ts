@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ACCESS_TOKEN, API_URL } from "../utils/constant";
-import { FormatIssue, Issue } from "./../types/issues";
+import { FormatIssue, Issue } from "../@types/issues";
 
 const headers = {
   Accept: "application/vnd.github.v3+json",

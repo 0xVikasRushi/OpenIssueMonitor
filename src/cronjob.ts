@@ -1,4 +1,4 @@
-import { SortedIssue } from "./../types/issues";
+import { SortedIssue } from "../@types/issues";
 import { LABELS, REQUEST_RATE } from "./../utils/constant";
 import filterIssues from "./../utils/filterIssues";
 import bot from "./../utils/telegram";
