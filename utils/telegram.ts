@@ -81,11 +81,11 @@ const handleServerStatus = async (chatId: number) => {
 };
 const handleHelp = async (chatId: number) => {
   const availableCommands = [
-    "/start - Start the server",
+    "/startserver - Start the server",
     "/status - Check server status",
     "/stop - Stop the server",
     "/ratelimit - Configure rate limit",
-    "/help - Display available commands",
+    "/help or /start - Display available commands",
   ];
   const helpMessage = "Available commands:\n" + availableCommands.join("\n");
   await sendMessage(chatId, helpMessage);
@@ -94,7 +94,7 @@ const handleHelp = async (chatId: number) => {
 
 bot.on("message", async (msg) => {
   switch (msg.text) {
-    case "/start":
+    case "/startserver":
       handleStartServer(msg.chat.id);
       break;
     case "/status":
@@ -106,7 +106,8 @@ bot.on("message", async (msg) => {
     case "/ratelimit":
       handleRateLimit(msg.chat.id);
       break;
-    case "/help":
+    case "/help" || "/start":
+      // ? telegram bot start
       handleHelp(msg.chat.id);
       break;
     default:
