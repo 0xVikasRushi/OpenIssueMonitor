@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ACCESS_TOKEN, API_URL } from "../utils/constant";
-import { FormatIssue, Issue } from "../@types/issues";
+import { FormatIssue, Issue } from "../types/issues";
 
 const headers = {
   Accept: "application/vnd.github.v3+json",
@@ -34,9 +34,7 @@ export async function getRateLimit() {
 
 export async function getIssues(repoOwner: string, repoName: string) {
   try {
-    const response = await githubAPI.get(
-      `/repos/${repoOwner}/${repoName}/issues`
-    );
+    const response = await githubAPI.get(`/repos/${repoOwner}/${repoName}/issues`);
     const issues: Issue[] = response.data;
 
     const formatIssues: FormatIssue[] = issues.map((issue: Issue) => ({

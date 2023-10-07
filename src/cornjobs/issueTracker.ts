@@ -1,16 +1,14 @@
-import { SortedIssue } from "../@types/issues";
-import { LABELS, REQUEST_RATE } from "./../utils/constant";
-import filterIssues from "./../utils/filterIssues";
-import bot from "./../utils/telegram";
-import { getIssues } from "./api";
+import { SortedIssue } from "../../types/issues";
+import { LABELS, REQUEST_RATE } from "../../utils/constant";
+import filterIssues from "../../utils/filterIssues";
+import Telegrambot from "../notification-services/telegram/telegram";
+import { getIssues } from "../api";
 
 let PreviousIssues: SortedIssue[] = [];
 let newIssues: SortedIssue[] = [];
 
-const cronJob = async (repoOwner: string, repoName: string) => {
-  console.count(
-    `------------------running a task every ${REQUEST_RATE} seconds------------------------>`
-  );
+const issueTracker = async (repoOwner: string, repoName: string) => {
+  console.count(`------------------running a task every ${REQUEST_RATE} seconds------------------------>`);
   const formatIssues = await getIssues(repoOwner, repoName);
   const currentIssues = filterIssues(formatIssues, LABELS);
 
@@ -39,13 +37,10 @@ const cronJob = async (repoOwner: string, repoName: string) => {
         title: issue.title,
       });
 
-      bot.sendMessage(
-        process.env.TELEGRAM_CHAT_ID,
-        `New issue: ${issue.Requestedlabel} \n${issue.url}`
-      );
+      Telegrambot.sendMessage(process.env.TELEGRAM_CHAT_ID, `New issue: ${issue.Requestedlabel} \n${issue.url}`);
     });
     newIssues = []; // ? Reset the new issues
   }
 };
 
-export default cronJob;
+export default issueTracker;

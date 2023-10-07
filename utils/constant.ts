@@ -1,4 +1,4 @@
-import { ServerStatus } from "../@types/server";
+import { ServerStatus } from "../types/server";
 const REQUEST_RATE = 15;
 const API_URL = "https://api.github.com";
 const ACCESS_TOKEN = process.env.GITHUB_ACCESS_TOKEN;

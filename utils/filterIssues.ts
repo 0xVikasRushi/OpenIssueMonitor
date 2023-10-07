@@ -1,4 +1,4 @@
-import { FormatIssue, SortedIssue } from "../@types/issues";
+import { FormatIssue, SortedIssue } from "../types/issues";
 import { convertGithubApiUrlToRegularUrl } from "./utils";
 
 const filterIssues = (formatIssue: FormatIssue[], labels: Map<string, boolean>) => {

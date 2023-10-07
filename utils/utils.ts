@@ -9,16 +9,13 @@ export const convertGithubApiUrlToRegularUrl = (apiUrl: string): string | null =
   }
   return null;
 };
-export const getRepoInfo = (repoUrl: string): [string, string] => {
+export const getRepoOwnerAndName = (repoUrl: string): [string, string] => {
   const url = new URL(repoUrl);
   if (url.hostname !== "github.com") {
     throw new Error("Not a GitHub repository URL");
   }
 
   const pathParts = url.pathname.split("/");
-  if (pathParts.length !== 3) {
-    throw new Error("Invalid GitHub repository URL");
-  }
 
   const repoOwner = pathParts[1];
   const repoName = pathParts[2];
