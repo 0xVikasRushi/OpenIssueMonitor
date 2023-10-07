@@ -15,13 +15,21 @@
   "scripts": {
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "build": "tsc --build",
-    "start": "tsc && node dist/index.js"
+    "start": "tsc && node dist/index.js",
+    "lint": "eslint src/**/*.ts",
+    "format": "eslint src/**/*.ts --fix"
   },
   "devDependencies": {
     "@types/node": "^20.8.2",
     "@types/node-cron": "^3.0.9",
     "@types/node-telegram-bot-api": "^0.61.8",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
+    "eslint": "^8.51.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
     "nodemon": "^3.0.1",
+    "prettier": "^3.0.3",
     "ts-node": "^10.9.1"
   },
   "engines": {

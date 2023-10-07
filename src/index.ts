@@ -1,4 +1,4 @@
-require("dotenv").config();
+import "dotenv/config";
 import cron from "node-cron";
 import { REPO_NAME, REPO_OWNER, REQUEST_RATE } from "./../utils/constant";
 import cronJob from "./cronjob";

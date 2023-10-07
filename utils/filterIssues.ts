@@ -1,14 +1,11 @@
 import { FormatIssue, SortedIssue } from "../@types/issues";
 import { convertGithubApiUrlToRegularUrl } from "./utils";
 
-const filterIssues = (
-  formatIssue: FormatIssue[],
-  labels: Map<String, Boolean>
-) => {
+const filterIssues = (formatIssue: FormatIssue[], labels: Map<string, boolean>) => {
   // ? go to every issue and check if the
   // ? label is in the map and if the map : true its consist then save it in a return new array
 
-  let formattedIssues: SortedIssue[] = [];
+  const formattedIssues: SortedIssue[] = [];
   for (let i = 0; i < formatIssue.length; i++) {
     const issue = formatIssue[i];
     const issueLabels = issue.label;
