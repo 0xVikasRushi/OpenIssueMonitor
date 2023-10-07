@@ -34,27 +34,37 @@ const handleStartServer = async (bot: TelegramBot, chatId: number) => {
 
     const repoInfoPromise = new Promise<void>(async (resolve) => {
       bot.once("message", async (msg) => {
-        const repoInfo = getRepoOwnerAndName(msg.text);
-        setterRepoInfo(repoInfo[0], repoInfo[1]);
+        const githubRepoUrlPattern = /^https?:\/\/github\.com\/([^/]+)\/([^/]+)\/?/;
+        if (!githubRepoUrlPattern.test(msg.text)) {
+          message = `Invalid RepoLink! Enter a valid RepoLink to start 🚧`;
+          await bot.sendMessage(chatId, message);
+          console.log(message);
+          resolve();
+          return;
+        } else {
+          const repoInfo = getRepoOwnerAndName(msg.text);
+          setterRepoInfo(repoInfo[0], repoInfo[1]);
 
-        message = `*CONFIGURATION SUCCESSFUL  ✅*\n *Repository Owner*: ${repoInfo[0]}\n Repository Name: ${
-          repoInfo[1]
-        }\n labels:${Array.from(LABELS.keys()).join(", \n ")}\nREQUEST_RATE : ${REQUEST_RATE}\n
-        `;
-        setterConfiguration(message);
-        await bot.sendMessage(chatId, message);
-        console.log(message);
+          message = `*CONFIGURATION SUCCESSFUL  ✅*\n *Repository Owner*: ${repoInfo[0]}\n Repository Name: ${
+            repoInfo[1]
+          }\n labels:${Array.from(LABELS.keys()).join(", \n ")}\nREQUEST_RATE : ${REQUEST_RATE}\n
+          `;
+          setterConfiguration(message);
+          await bot.sendMessage(chatId, message);
 
-        resolve();
+          console.log(message);
+          cornServer.start();
+          setterServerStatus("Started");
+          message = `Server started successfully!  ✅ `;
+          bot.sendMessage(chatId, message);
+          console.log(message);
+
+          resolve();
+        }
       });
     });
 
     await repoInfoPromise;
-    cornServer.start();
-    setterServerStatus("Started");
-    message = `Server started successfully!  ✅ `;
-    bot.sendMessage(chatId, message);
-    console.log(message);
   } catch (error) {
     console.error(error);
   }
