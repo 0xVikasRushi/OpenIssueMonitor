@@ -136,7 +136,8 @@ const handleChangeRateLimit = async (bot: TelegramBot, chatId: number) => {
     const rateLimitPromise = new Promise<void>(async (resolve) => {
       bot.once("message", async (msg) => {
         const rate = parseInt(msg.text);
-        if (rate > 4 && rate < 60) {
+
+        if (!isNaN(rate) && rate > 4 && rate < 60) {
           cornServer.stop();
           setterRequestRate(rate);
           await bot.sendMessage(chatId, (message = `Rate limit changed successfully! ${rate} requests per minute ✅`));
