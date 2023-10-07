@@ -11,7 +11,11 @@ const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 let REPO_NAME = process.env.REPO_NAME;
 let REPO_OWNER = process.env.REPO_OWNER;
 let SERVER_STATUS: ServerStatus = "Ideal";
+let CONFIGURATION: string = "";
 
+const setterConfiguration = (message: string) => {
+  CONFIGURATION = message;
+};
 const setterServerStatus = (status: ServerStatus) => {
   SERVER_STATUS = status;
 };
@@ -36,13 +40,15 @@ const LABELS = new Map([
 export {
   ACCESS_TOKEN,
   API_URL,
+  CONFIGURATION,
   LABELS,
-  REQUEST_RATE,
-  TELEGRAM_ACCESS_TOKEN,
-  TELEGRAM_CHAT_ID,
   REPO_NAME,
   REPO_OWNER,
+  REQUEST_RATE,
   SERVER_STATUS,
+  TELEGRAM_ACCESS_TOKEN,
+  TELEGRAM_CHAT_ID,
+  setterConfiguration,
   setterRepoInfo,
   setterServerStatus,
 };

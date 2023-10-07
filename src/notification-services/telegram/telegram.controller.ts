@@ -1,5 +1,13 @@
 import TelegramBot from "node-telegram-bot-api";
-import { LABELS, REQUEST_RATE, SERVER_STATUS, setterRepoInfo, setterServerStatus } from "../../../utils/constant";
+import {
+  CONFIGURATION,
+  LABELS,
+  REQUEST_RATE,
+  SERVER_STATUS,
+  setterConfiguration,
+  setterRepoInfo,
+  setterServerStatus,
+} from "../../../utils/constant";
 import { getRateLimit } from "../../api";
 import { getRepoOwnerAndName } from "./../../../utils/utils";
 import cornServer from "./../../index";
@@ -28,13 +36,11 @@ const handleStartServer = async (bot: TelegramBot, chatId: number) => {
         const repoInfo = getRepoOwnerAndName(msg.text);
         setterRepoInfo(repoInfo[0], repoInfo[1]);
 
-        message = `CONFIGURATION SUCCESSFUL  ✅
-        REPOOWNER: ${repoInfo[0]}
-        REPONAME: ${repoInfo[1]}
-        LABEL : ${Array.from(LABELS.keys()).join(", ")}
-        REQUEST_RATE : ${REQUEST_RATE}  
+        message = `*CONFIGURATION SUCCESSFUL  ✅*\n *Repository Owner*: ${repoInfo[0]}\n Repository Name: ${
+          repoInfo[1]
+        }\n labels:${Array.from(LABELS.keys()).join(", \n ")}\nREQUEST_RATE : ${REQUEST_RATE}\n
         `;
-
+        setterConfiguration(message);
         await bot.sendMessage(chatId, message);
         console.log(message);
 
@@ -98,4 +104,16 @@ const handleRateLimit = async (bot: TelegramBot, chatId: number) => {
   }
 };
 
-export { handleHelp, handleRateLimit, handleServerStatus, handleStartServer, handleStopServer };
+const handleGetCurrentConfig = async (bot: TelegramBot, chatId: number) => {
+  try {
+    if (SERVER_STATUS === "Stopped" || SERVER_STATUS === "Ideal") {
+      await bot.sendMessage(chatId, `Server is ${SERVER_STATUS}! Start the server first!`);
+      return;
+    }
+    await bot.sendMessage(chatId, CONFIGURATION);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export { handleGetCurrentConfig, handleHelp, handleRateLimit, handleServerStatus, handleStartServer, handleStopServer };
