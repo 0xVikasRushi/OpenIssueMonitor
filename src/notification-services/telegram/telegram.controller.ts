@@ -6,6 +6,7 @@ import {
   SERVER_STATUS,
   setterConfiguration,
   setterRepoInfo,
+  setterRequestRate,
   setterServerStatus,
 } from "../../../utils/constant";
 import { getRateLimit } from "../../api";
@@ -76,7 +77,9 @@ const handleHelp = async (bot: TelegramBot, chatId: number) => {
       "/startserver - Start the server",
       "/status - Check server status",
       "/stop - Stop the server",
-      "/ratelimit - Configure rate limit",
+      "/ratelimit - Get current rate limit",
+      "/getCurrentConfig - Get current configuration",
+      "/changeRateLimit - Change rate limit",
       "/help or /start - Display available commands",
     ];
     const helpMessage = "Available commands:\n" + availableCommands.join("\n");
@@ -116,4 +119,40 @@ const handleGetCurrentConfig = async (bot: TelegramBot, chatId: number) => {
   }
 };
 
-export { handleGetCurrentConfig, handleHelp, handleRateLimit, handleServerStatus, handleStartServer, handleStopServer };
+const handleChangeRateLimit = async (bot: TelegramBot, chatId: number) => {
+  try {
+    bot.sendMessage(chatId, "Enter the new rate limit (3-60 requests per minute)");
+    let message = "";
+    const rateLimitPromise = new Promise<void>(async (resolve) => {
+      bot.once("message", async (msg) => {
+        const rate = parseInt(msg.text);
+        if (rate > 4 && rate < 60) {
+          cornServer.stop();
+          setterRequestRate(rate);
+          await bot.sendMessage(chatId, (message = `Rate limit changed successfully! ${rate} requests per minute ✅`));
+          cornServer.start();
+        } else {
+          await bot.sendMessage(
+            chatId,
+            (message = `Invaild Rate limit should be between 3 and 60 requests per minute`),
+          );
+        }
+        console.log(message);
+        resolve();
+      });
+    });
+    await rateLimitPromise;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export {
+  handleGetCurrentConfig,
+  handleHelp,
+  handleRateLimit,
+  handleServerStatus,
+  handleStartServer,
+  handleStopServer,
+  handleChangeRateLimit,
+};

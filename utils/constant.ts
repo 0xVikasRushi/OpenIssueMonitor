@@ -1,5 +1,5 @@
 import { ServerStatus } from "../types/server";
-const REQUEST_RATE = 15;
+let REQUEST_RATE = 15;
 const API_URL = "https://api.github.com";
 const ACCESS_TOKEN = process.env.GITHUB_ACCESS_TOKEN;
 const TELEGRAM_ACCESS_TOKEN = process.env.TELEGRAM_ACCESS_TOKEN;
@@ -18,6 +18,10 @@ const setterConfiguration = (message: string) => {
 };
 const setterServerStatus = (status: ServerStatus) => {
   SERVER_STATUS = status;
+};
+
+const setterRequestRate = (rate: number) => {
+  REQUEST_RATE = rate;
 };
 
 const setterRepoInfo = (_repoOwner: string, _repoName: string) => {
@@ -51,4 +55,5 @@ export {
   setterConfiguration,
   setterRepoInfo,
   setterServerStatus,
+  setterRequestRate,
 };
