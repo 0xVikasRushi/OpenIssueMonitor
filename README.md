@@ -114,4 +114,15 @@ The Telegram bot offers the following commands to interact with the Open Issue M
   - Action: Displays usage instructions and available commands.
 
 - Default: If an invalid or unrecognized command is provided, the bot will display usage instructions.
+## Self Hosting
+  You have the Free options to self-host the Open Issue Monitor backend for free on various cloud platforms. Here are some recommended free hosting options:
+- [Render](https://render.com/)
+  Render offers a free tier that allows you to host web applications without incurring costs.
+- [Railway](https://railway.app/)
+- [Fly.io](https://fly.io/)
+- [Amazon EC2 (Free Tier)](https://aws.amazon.com/ec2/)
+  Amazon EC2 offers a free tier that allows you to run small virtual servers for free for 12 months.
+
+Choose one of these free hosting platforms to deploy your Open Issue Monitor backend without incurring hosting expenses.
+Refer to the respective platform's documentation for detailed deployment instructions.
 
