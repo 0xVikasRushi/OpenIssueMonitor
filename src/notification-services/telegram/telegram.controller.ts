@@ -89,6 +89,7 @@ const handleHelp = async (bot: TelegramBot, chatId: number) => {
       "/status - Check server status",
       "/stop - Stop the server",
       "/ratelimit - Get current rate limit",
+      "/addLabel - Add label to the server",
       "/getCurrentConfig - Get current configuration",
       "/changeRateLimit - Change rate limit",
       "/help or /start - Display available commands",
@@ -140,8 +141,14 @@ const handleChangeRateLimit = async (bot: TelegramBot, chatId: number) => {
 
         if (!isNaN(rate) && rate > 4 && rate < 60) {
           cornServer.stop();
+
           setterRequestRate(rate);
-          await bot.sendMessage(chatId, (message = `Rate limit changed successfully! ${rate} requests per minute ✅`));
+          await bot.sendMessage(
+            chatId,
+            // ! BUG : HERE RATE LIMIT IS NOT CHANGING IN REQUEST_RATE
+            // ! BUT SERVER ITS ACUTALLY CHANGING RUNNING ON NEW RATE LIMIT
+            (message = `Rate limit changed successfully! ${REQUEST_RATE} requests per minute ✅`),
+          );
           cornServer.start();
         } else {
           await bot.sendMessage(
@@ -159,6 +166,34 @@ const handleChangeRateLimit = async (bot: TelegramBot, chatId: number) => {
   }
 };
 
+const handleLabel = async (bot: TelegramBot, chatId: number) => {
+  if (SERVER_STATUS === "Started") {
+    await bot.sendMessage(chatId, "Server is already started! stop the server to Configure");
+    return;
+  }
+  try {
+    await bot.sendMessage(chatId, "Enter the label name : ");
+    let message = "";
+    const handleLabelPromise = new Promise<void>(async (resolve) => {
+      bot.once("message", async (msg) => {
+        const label = msg.text;
+        if (LABELS.has(label) && LABELS.get(label)) {
+          await bot.sendMessage(chatId, (message = `Label already existed ✅`));
+          resolve();
+        } else {
+          LABELS.set(label, true);
+          await bot.sendMessage(chatId, (message = `Label added successfully ✅`));
+          resolve();
+        }
+        console.log(message);
+      });
+    });
+    await handleLabelPromise;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export {
   handleChangeRateLimit,
   handleGetCurrentConfig,
@@ -167,4 +202,5 @@ export {
   handleServerStatus,
   handleStartServer,
   handleStopServer,
+  handleLabel,
 };

@@ -8,6 +8,7 @@ import {
   handleStopServer,
   handleGetCurrentConfig,
   handleChangeRateLimit,
+  handleLabel,
 } from "./telegram.controller";
 
 console.log("... Telegram bot server started ...");
@@ -32,6 +33,9 @@ Telegrambot.on("message", async (msg) => {
       break;
     case "/changeRateLimit":
       handleChangeRateLimit(Telegrambot, msg.chat.id);
+      break;
+    case "/addLabel":
+      handleLabel(Telegrambot, msg.chat.id);
       break;
     case "/help" || "/start":
       // ? telegram bot start
