@@ -1,6 +1,8 @@
 # Open Issue Monitor
+![image](https://github.com/0xVikasRushi/OpenIssueMonitor/assets/88543171/be60de22-56bd-4f70-9877-9b87013feabc)
 
 Open Issue Monitor is a notification system designed for tracking specific GitHub issues. It enables you to monitor issues in open-source GitHub repositories that have specific labels. 
+
 
 It regularly scans for new issues, compares them to the existing ones, and sends you notifications via Telegram whenever there are updates or changes.
 
