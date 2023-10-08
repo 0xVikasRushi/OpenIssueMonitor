@@ -45,9 +45,10 @@ const handleStartServer = async (bot: TelegramBot, chatId: number) => {
           const repoInfo = getRepoOwnerAndName(msg.text);
           setterRepoInfo(repoInfo[0], repoInfo[1]);
 
-          message = `*CONFIGURATION SUCCESSFUL  ✅*\n *Repository Owner*: ${repoInfo[0]}\n Repository Name: ${
-            repoInfo[1]
-          }\n labels:${Array.from(LABELS.keys()).join(", \n ")}\nREQUEST_RATE : ${REQUEST_RATE}\n
+          const requestedLabels = `${Array.from(LABELS.keys())
+            .filter((key) => LABELS.get(key) === true)
+            .join(", \n ")}\nREQUEST_RATE : ${REQUEST_RATE}`;
+          message = `*CONFIGURATION SUCCESSFUL  ✅*\n *Repository Owner*: ${repoInfo[0]}\n Repository Name: ${repoInfo[1]}\n labels: ${requestedLabels}\n
           `;
           setterConfiguration(message);
           await bot.sendMessage(chatId, message);
@@ -159,11 +160,11 @@ const handleChangeRateLimit = async (bot: TelegramBot, chatId: number) => {
 };
 
 export {
+  handleChangeRateLimit,
   handleGetCurrentConfig,
   handleHelp,
   handleRateLimit,
   handleServerStatus,
   handleStartServer,
   handleStopServer,
-  handleChangeRateLimit,
 };
