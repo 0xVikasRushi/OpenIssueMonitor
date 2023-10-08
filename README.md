@@ -12,8 +12,9 @@ It regularly scans for new issues, compares them to the existing ones, and sends
 - [How It Works](#how-it-works)
   - [Math Section](#math-section)
 - [Installation](#installation)
-    - [Telegram Bot Usage](#telegram-bot-usage)
-    - [Self Hosting](#self-hosting)
+    - [Create Telegram Bot](https://github.com/0xVikasRushi/OpenIssueMonitor/blob/main/CREATE_BOT.md)
+- [Usage](#usage)
+- [Self Hosting](#self-hosting)
 - Limitations 
 ## Major Problem
  
@@ -31,29 +32,6 @@ If you're someone who's genuinely interested in contributing to open-source proj
 - Compare previous and new issue data to detect changes.
 - Notify users of new issues via Telegram.
 
-## Installation
-
-To run Open Issue Monitor, follow these steps:
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/0xVikasRushi/OpenIssueMonitor
-   cd OpenIssueMonitor
-2. Install dependencies:
-   ```bash
-    yarn install
-3. Set up your environment variables:
-Create a .env file in the project root directory with the following content:
-    ```bash
-    GITHUB_ACCESS_TOKEN=your_github_access_token
-    TELEGRAM_BOT_TOKEN=your_telegram_bot_token
-    REPO_OWNER=<optional>
-    REPO_NAME=<optional>
-    
-4. Start the application:
-    ```bash
-     yarn run dev
 ## How It Works
 ### Math Section
 To understand how the rate of API requests aligns with the GitHub rate limit, let's break down the calculations:
@@ -68,4 +46,35 @@ To understand how the rate of API requests aligns with the GitHub rate limit, le
 Telegram when new issues are detected.
 
 You can also use the `/rate-limit` command in Telegram bot to check the rate limit status of the GitHub API.
+
+
+## Installation
+
+To run Open Issue Monitor, follow these steps:
+
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/0xVikasRushi/OpenIssueMonitor
+   cd OpenIssueMonitor
+2. Install dependencies:
+   ```bash
+    yarn install
+3. Environment Variables
+    To run this project, you will need to add the following environment variables to your .env file<br>
+    
+    `TELEGRAM_BOT_TOKEN=` - [Guide to Create Telegram Access Token](https://github.com/0xVikasRushi/OpenIssueMonitor/blob/main/CREATE_BOT.md) <br>
+    `GITHUB_ACCESS_TOKEN` - [Guide to Create Github Access Token](https://docs.github.com/en/enterprise-server@3.6/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) <br>
+
+    Create a .env file in the project root directory with the following content:
+      ```bash
+      GITHUB_ACCESS_TOKEN=your_github_access_token
+      TELEGRAM_BOT_TOKEN=your_telegram_bot_token
+      REPO_OWNER=<optional>
+      REPO_NAME=<optional>
+    
+5. Start the application:
+    ```bash
+     yarn run dev
 
