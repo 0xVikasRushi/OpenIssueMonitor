@@ -77,4 +77,41 @@ To run Open Issue Monitor, follow these steps:
 5. Start the application:
     ```bash
      yarn run dev
+## Usage
+
+The Telegram bot offers the following commands to interact with the Open Issue Monitor:
+
+- `/startserver`: Start the server for monitoring GitHub issues.
+  - Example usage: `/startserver`
+  - Action: Initiates the server for monitoring.
+
+- `/status`: Check the status of the server.
+  - Example usage: `/status`
+  - Action: Retrieves the current status of the server.
+
+- `/stop`: Stop the server.
+  - Example usage: `/stop`
+  - Action: Stops the server.
+
+- `/ratelimit`: Check the rate limit status.
+  - Example usage: `/ratelimit`
+  - Action: Retrieves information about the rate limit.
+
+- `/getCurrentConfig`: Get the current configuration.
+  - Example usage: `/getCurrentConfig`
+  - Action: Retrieves and displays the current configuration settings.
+
+- `/changeRateLimit`: Change the rate limit settings.
+  - Example usage: `/changeRateLimit`
+  - Action: Allows changing the rate limit settings.
+
+- `/addLabel`: Add a label to an issue.
+  - Example usage: `/addLabel`
+  - Action: Provides a way to add labels to GitHub issues.
+
+- `/help` or `/start`: Get help and usage instructions.
+  - Example usage: `/help` or `/start`
+  - Action: Displays usage instructions and available commands.
+
+- Default: If an invalid or unrecognized command is provided, the bot will display usage instructions.
 
