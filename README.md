@@ -1,13 +1,26 @@
 # Open Issue Monitor
 
-Open Issue Monitor is an open-source project that allows you to track issues in GitHub open-source repositories with specific labels. It 
-periodically checks for new issues, compares them to the previous set of issues, and notifies you of any changes via Telegram.
+Open Issue Monitor is a notification system designed for tracking specific GitHub issues. It enables you to monitor issues in open-source GitHub repositories that have specific labels. 
+
+It regularly scans for new issues, compares them to the existing ones, and sends you notifications via Telegram whenever there are updates or changes.
 
 ## Table of Contents
+- [Problem](#major-problem)
 - [Features](#features)
-- [Installation](#installation)
 - [How It Works](#how-it-works)
   - [Math Section](#math-section)
+- [Installation](#installation)
+    - [Telegram Bot Usage](#telegram-bot-usage)
+    - [Self Hosting](#self-hosting)
+- Limitations 
+## Major Problem
+ 
+If you're someone  actively contribute to open-source projects on GitHub, you know how crucial it is to be one of the first people and get issue assigned to you. 
+
+But when you use GitHub's watch on in repositories, you end up getting a lot of emails. These emails include every discussion and a lot of extra information that you might not actually want or need.
+
+If you're someone who's genuinely interested in contributing to open-source projects, such as through programs like GSOC, then you're in the right place! Welcome to the community.
+
 
 ## Features
 
@@ -23,7 +36,7 @@ To run Open Issue Monitor, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/0xVikasRushi/OpenIssueMonitor.git
+   git clone https://github.com/0xVikasRushi/OpenIssueMonitor
    cd OpenIssueMonitor
 2. Install dependencies:
    ```bash
@@ -33,7 +46,9 @@ Create a .env file in the project root directory with the following content:
     ```bash
     GITHUB_ACCESS_TOKEN=your_github_access_token
     TELEGRAM_BOT_TOKEN=your_telegram_bot_token
-    TELEGRAM_CHAT_ID=your_telegram_chat_id
+    REPO_OWNER=<optional>
+    REPO_NAME=<optional>
+    
 4. Start the application:
     ```bash
      yarn run dev
@@ -51,5 +66,4 @@ To understand how the rate of API requests aligns with the GitHub rate limit, le
 Telegram when new issues are detected.
 
 You can also use the `/rate-limit` command in Telegram bot to check the rate limit status of the GitHub API.
-
 
