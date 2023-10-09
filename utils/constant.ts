@@ -1,5 +1,5 @@
 import { ServerStatus } from "../types/server";
-let REQUEST_RATE = 15;
+let REQUEST_RATE = 10;
 const API_URL = "https://api.github.com";
 const ACCESS_TOKEN = process.env.GITHUB_ACCESS_TOKEN;
 const TELEGRAM_ACCESS_TOKEN = process.env.TELEGRAM_ACCESS_TOKEN;
