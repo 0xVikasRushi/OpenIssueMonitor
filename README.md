@@ -1,5 +1,7 @@
 # Open Issue Monitor
-![image](https://github.com/0xVikasRushi/OpenIssueMonitor/assets/88543171/be60de22-56bd-4f70-9877-9b87013feabc)
+
+
+![open-issue-monitor](https://github.com/0xVikasRushi/OpenIssueMonitor/assets/88543171/eefa8856-4e09-4ad4-a720-571d8d8ac7e4)
 
 Open Issue Monitor is a notification system designed for tracking specific GitHub issues. It enables you to monitor issues in open-source GitHub repositories that have specific labels. 
 
@@ -15,7 +17,11 @@ It regularly scans for new issues, compares them to the existing ones, and sends
     - [Create Telegram Bot](https://github.com/0xVikasRushi/OpenIssueMonitor/blob/main/CREATE_BOT.md)
 - [Usage](#usage)
 - [Self Hosting](#self-hosting)
-- Limitations 
+- [Limitations](#limitations)
+- [What's Next](#whats-next)
+- [License](#license)
+- [Feedback](#feedback)
+
 ## Major Problem
  
 If you're someone  actively contribute to open-source projects on GitHub, you know how crucial it is to be one of the first people and get issue assigned to you. 
@@ -36,11 +42,11 @@ If you're someone who's genuinely interested in contributing to open-source proj
 ### Math Section
 To understand how the rate of API requests aligns with the GitHub rate limit, let's break down the calculations:
 - GitHub rate limit: 5000 requests per hour
-- OpenIssueMointer application sends 1 request every 15 seconds (approximately 4 requests per minute).
+- OpenIssueMointer application sends 1 request every 10 seconds (approximately 6 requests per minute).
 
 #### Calculations:
 
-- Requests per hour by your application: 4 requests/minute * 60 minutes = 240 requests/hour
+- Requests per hour : 6 requests/minute * 60 minutes = 360 requests/hour
 - OpenIssueMointer application's rate of sending requests is well within the GitHub rate limit, ensuring smooth and uninterrupted operation.
 - Once the application is running, it will periodically check for new issues in the GitHub repositories you have configured and notify you via 
 Telegram when new issues are detected.
@@ -122,7 +128,37 @@ The Telegram bot offers the following commands to interact with the Open Issue M
 - [Fly.io](https://fly.io/)
 - [Amazon EC2 (Free Tier)](https://aws.amazon.com/ec2/)
   Amazon EC2 offers a free tier that allows you to run small virtual servers for free for 12 months.
-
+  
 Choose one of these free hosting platforms to deploy your Open Issue Monitor backend without incurring hosting expenses.
 Refer to the respective platform's documentation for detailed deployment instructions.
+
+## Limitations
+
+Open Issue Monitor currently has some limitations:
+
+1. **Single Repository Focus:** It can only monitor and provide notifications for a single GitHub repository at a time. If you're involved in multiple projects, you would need to set up separate instances for each repository.
+
+2. **Multi-Label Tracking:** While it can track multiple labels within a repository, it doesn't support tracking across multiple repositories simultaneously. Each instance of Open Issue Monitor is dedicated to a specific repository.
+
+## What's Next
+
+The future development of Open Issue Monitor:
+
+1. **Multiple Repository Support:**  Allowing users to monitor and receive notifications from multiple GitHub repositories within a single instance of the application.
+2. **Managed Service Platform:** We are exploring the idea of creating a platform where users can easily subscribe to multiple repositories and select specific labels of interest.
+3. **Discord Bot Integration:** To expand our reach and accommodate different communication preferences, we're planning to introduce a Discord bot service alongside the existing Telegram integration.
+
+
+## License
+[MIT](https://github.com/0xVikasRushi/OpenIssueMonitor/blob/main/LICENSE)
+
+## Feedback
+
+Feel free to utilize the code for your own purposes, explore its inner workings, and make it your own. However, we kindly request that you remain mindful of GitHub's rate limit policies when using our application. 
+Moreover.
+
+I love constructive criticism! Don't hesitate to roast my code, point out areas for improvement.
+Suggest new features and Thanks to [Shubh A Chudasama](https://github.com/c-shubh) helping me out the project.
+
+
 
