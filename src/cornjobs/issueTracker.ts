@@ -1,5 +1,5 @@
 import { SortedIssue } from "../../types/issues";
-import { LABELS, REQUEST_RATE } from "../../utils/constant";
+import { LABELS, REQUEST_RATE, TELEGRAM_CHAT_ID } from "../../utils/constant";
 import filterIssues from "../../utils/filterIssues";
 import Telegrambot from "../notification-services/telegram/telegram";
 import { getIssues } from "../api";
@@ -37,7 +37,7 @@ const issueTracker = async (repoOwner: string, repoName: string) => {
         title: issue.title,
       });
 
-      Telegrambot.sendMessage(process.env.TELEGRAM_CHAT_ID, `New issue: ${issue.Requestedlabel} \n${issue.url}`);
+      Telegrambot.sendMessage(TELEGRAM_CHAT_ID, `New issue: ${issue.Requestedlabel} \n${issue.url}`);
     });
     newIssues = []; // ? Reset the new issues
   }

@@ -1,5 +1,5 @@
 import TelegramBot from "node-telegram-bot-api";
-import { TELEGRAM_ACCESS_TOKEN } from "../../../utils/constant";
+import { TELEGRAM_ACCESS_TOKEN, TELEGRAM_CHAT_ID, setterChatId } from "../../../utils/constant";
 import {
   handleHelp,
   handleRateLimit,
@@ -15,6 +15,10 @@ console.log("... Telegram bot server started ...");
 const Telegrambot = new TelegramBot(TELEGRAM_ACCESS_TOKEN, { polling: true });
 
 Telegrambot.on("message", async (msg) => {
+  if (isNaN(TELEGRAM_CHAT_ID)) {
+    setterChatId(msg.chat.id);
+    console.log(TELEGRAM_CHAT_ID);
+  }
   switch (msg.text) {
     case "/startserver":
       handleStartServer(Telegrambot, msg.chat.id);

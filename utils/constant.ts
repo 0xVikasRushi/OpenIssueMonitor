@@ -3,7 +3,7 @@ let REQUEST_RATE = 10;
 const API_URL = "https://api.github.com";
 const ACCESS_TOKEN = process.env.GITHUB_ACCESS_TOKEN;
 const TELEGRAM_ACCESS_TOKEN = process.env.TELEGRAM_ACCESS_TOKEN;
-
+let TELEGRAM_CHAT_ID = parseInt(process.env.TELEGRAM_CHAT_ID);
 // ? GLOBAL STATE
 
 // TODO: SHOULD SAVE IN REDIS AND MAINATAIN THE STATE
@@ -17,6 +17,10 @@ const setterConfiguration = (message: string) => {
 };
 const setterServerStatus = (status: ServerStatus) => {
   SERVER_STATUS = status;
+};
+
+const setterChatId = (chatId: number) => {
+  TELEGRAM_CHAT_ID = chatId;
 };
 
 const setterRequestRate = (rate: number) => {
@@ -50,8 +54,10 @@ export {
   REQUEST_RATE,
   SERVER_STATUS,
   TELEGRAM_ACCESS_TOKEN,
+  TELEGRAM_CHAT_ID,
   setterConfiguration,
   setterRepoInfo,
   setterServerStatus,
   setterRequestRate,
+  setterChatId,
 };
