@@ -6,7 +6,7 @@ Before you can use the Open Issue Monitor Telegram bot, you need to create a Tel
    - Open the Telegram app or visit the Telegram website.
    - Search for "BotFather" in the search bar.
 <div align="center">
-   <img width="280" height="480" alt="BotFather" src="https://github.com/0xVikasRushi/OpenIssueMonitor/assets/88543171/70a012b8-021c-4708-a9d5-4f287027d6dc">
+   <img width="280" height="480" alt="BotFather" src="https://drive.google.com/uc?export=view&id=1Vw-lK6ve1r6Yj2U5vyfredXSs-xGyMwP">
 </div>
 
 2. **Start a Chat with BotFather:**
@@ -14,7 +14,7 @@ Before you can use the Open Issue Monitor Telegram bot, you need to create a Tel
    - Click on the "BotFather" result in the search results.
    - Start a chat with BotFather by clicking on the "Start" or `/start` button.
 <div align="center">
-   <img width="280" height="480" alt="BotFather" src="https://github.com/0xVikasRushi/OpenIssueMonitor/assets/88543171/7d34d516-bb66-404e-8281-dea6b86e29c7">
+   <img width="280" height="480" alt="BotFather" src="https://drive.google.com/uc?export=view&id=1LXGqkki65840XIgR8aX9x-MTKbr0owtK">
 </div>
    
 
@@ -33,7 +33,7 @@ Before you can use the Open Issue Monitor Telegram bot, you need to create a Tel
    - After successfully creating the bot, BotFather will provide you with an access token. This token is essential for your bot to interact with the Telegram API.
   
 <div align="center">
-   <img width="280" height="480" alt="BotFather-access-token" src="https://github.com/0xVikasRushi/OpenIssueMonitor/assets/88543171/1b871ad1-5891-4af9-85dc-8dcb331ea266">
+   <img width="280" height="480" alt="BotFather-access-token" src="https://drive.google.com/uc?export=view&id=1ZhFZ1IDFhdaiS93NAlG-ibFYG7rHD7Ql">
 </div>
   
 
