@@ -1,6 +1,15 @@
 # Open Issue Monitor
 
+[![Version](https://img.shields.io/npm/v/ipfs-encrypted)](https://www.npmjs.com/package/OpenIssueMonitor)
+![GitHub](https://img.shields.io/github/license/0xVikasRushi/OpenIssueMonitor)
+![Github Stars](https://img.shields.io/github/stars/0xVikasRushi/OpenIssueMonitor)
+![GitHub last commit](https://img.shields.io/github/last-commit/0xVikasRushi/OpenIssueMonitor)
+![GitHub issues](https://img.shields.io/github/issues-raw/0xVikasRushi/OpenIssueMonitor)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/0xVikasRushi/OpenIssueMonitor)
+
+
 ![Open Issue Monitor](https://github.com/0xVikasRushi/OpenIssueMonitor/assets/88543171/ea6766ad-ef1c-4ba5-903e-0c5eeb635051)
+
 
 
 Open Issue Monitor is a notification system designed for tracking specific GitHub issues. It enables you to monitor issues in open-source GitHub repositories that have specific labels. 
