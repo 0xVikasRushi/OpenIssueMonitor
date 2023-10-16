@@ -1,6 +1,6 @@
 # Open Issue Monitor
 
-[![Version](https://img.shields.io/npm/v/ipfs-encrypted)](https://www.npmjs.com/package/OpenIssueMonitor)
+[![Version](https://img.shields.io/npm/v/open-issue-monitor)](https://www.npmjs.com/package/open-issue-monitor)
 ![GitHub](https://img.shields.io/github/license/0xVikasRushi/OpenIssueMonitor)
 ![Github Stars](https://img.shields.io/github/stars/0xVikasRushi/OpenIssueMonitor)
 ![GitHub last commit](https://img.shields.io/github/last-commit/0xVikasRushi/OpenIssueMonitor)
