@@ -1,7 +1,6 @@
 import { createClient } from "redis";
 
 // ? create redis client ideally this should server should running via docker
-
 const client = createClient({});
 
 const connectRedis = async () => {
@@ -9,10 +8,10 @@ const connectRedis = async () => {
     await client.connect();
     console.log("Redis Server connected.");
   } catch (error) {
-    console.error(error);
+    console.error(error.message);
   }
 };
-const getRedis = async (key: string) => {
+const getValueFromRedis = async (key: string) => {
   try {
     const value = await client.get(key);
     return value;
@@ -20,11 +19,11 @@ const getRedis = async (key: string) => {
     console.error(error);
   }
 };
-const setRedis = async (key: string, value: string) => {
+const setValueToRedis = async (key: string, value: string) => {
   try {
     await client.set(key, value);
   } catch (error) {
     console.error(error);
   }
 };
-export { connectRedis, getRedis, setRedis };
+export { connectRedis, getValueFromRedis, setValueToRedis };

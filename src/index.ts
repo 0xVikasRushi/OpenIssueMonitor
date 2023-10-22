@@ -4,7 +4,7 @@ import { REPO_NAME, REPO_OWNER, REQUEST_RATE } from "./../utils/constant";
 import issueTracker from "./cornjobs/issueTracker";
 import { connectRedis } from "./store/redis-server";
 
-// ? start redis server
+// ? connect to redis and create a config variable to maintain the state
 connectRedis();
 
 const cornServer = cron.schedule(
