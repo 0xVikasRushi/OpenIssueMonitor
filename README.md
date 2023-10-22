@@ -1,6 +1,6 @@
 # Open Issue Monitor
 
-[![Version](https://img.shields.io/npm/v/open-issue-monitor)](https://www.npmjs.com/package/open-issue-monitor)
+![GitHub Release](https://img.shields.io/github/release/0xVikasRushi/OpenIssueMonitor.svg?style=flat)
 ![GitHub](https://img.shields.io/github/license/0xVikasRushi/OpenIssueMonitor)
 ![Github Stars](https://img.shields.io/github/stars/0xVikasRushi/OpenIssueMonitor)
 ![GitHub last commit](https://img.shields.io/github/last-commit/0xVikasRushi/OpenIssueMonitor)
